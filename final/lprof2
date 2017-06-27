@@ -1,0 +1,20 @@
+Timer unit: 1e-06 s
+
+Total time: 0 s
+File: /home/azuka/github/programacion_cientifica/final/game_of_life.py
+Function: evolve at line 55
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    55                                           @numba.jit('boolean[:,:] (boolean[:,:], int64[:,:], int64[:,:], int64)')
+    56                                           def evolve(universe, rule, num, t):
+    57                                               t0 = 0
+    58                                               rows, cols = universe.shape
+    59                                               new_universe = np.zeros((rows,cols), int)
+    60                                               while t0 < t:
+    61                                                   new_universe = step(universe, new_universe, rule)
+    62                                                   universe = np.zeros((rows,cols), bool)
+    63                                                   for value in num:
+    64                                                       universe = np.logical_or(new_universe == value, universe)
+    65                                                   t0 += 1
+    66                                               return universe

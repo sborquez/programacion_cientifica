@@ -1,0 +1,15 @@
+Filename: /home/azuka/github/programacion_cientifica/final/game_of_life.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    68    115.0 MiB      0.0 MiB   def n_evolve(universe, rule, num, t):
+    69    115.0 MiB      0.0 MiB       t0 = 0
+    70    115.0 MiB      0.0 MiB       rows, cols = universe.shape
+    71    115.0 MiB      0.0 MiB       new_universe = np.zeros((rows,cols), int)
+    72    115.0 MiB      0.0 MiB       while t0 < t:
+    73    115.0 MiB      0.0 MiB           new_universe = step(universe, new_universe, rule)
+    74    115.0 MiB      0.0 MiB           universe = np.zeros((rows,cols), bool)
+    75    115.0 MiB      0.0 MiB           for value in num:
+    76    115.0 MiB      0.0 MiB               universe = np.logical_or(new_universe == value, universe)
+    77    115.0 MiB      0.0 MiB           t0 += 1
+    78    115.0 MiB      0.0 MiB       return universe

@@ -1,0 +1,19 @@
+Timer unit: 1e-06 s
+
+Total time: 143.826 s
+File: /home/azuka/github/programacion_cientifica/final/game_of_life.py
+Function: nn_evolve at line 34
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    34                                           def nn_evolve(universe, rule, num, t):
+    35         1            5      5.0      0.0      t0 = 0
+    36         1            7      7.0      0.0      rows, cols = universe.shape
+    37         1          164    164.0      0.0      new_universe = np.zeros((rows,cols), int)
+    38        51          129      2.5      0.0      while t0 < t:
+    39        50    143784939 2875698.8    100.0          new_universe = nn_step(universe, new_universe, rule)
+    40        50         1678     33.6      0.0          universe = np.zeros((rows,cols), bool)
+    41       200         1978      9.9      0.0          for value in num:
+    42       150        36565    243.8      0.0              universe = np.logical_or(new_universe == value, universe)
+    43        50          225      4.5      0.0          t0 += 1
+    44         1            3      3.0      0.0      return universe

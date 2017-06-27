@@ -36,7 +36,7 @@ def nn_evolve(universe, rule, num, t):
     rows, cols = universe.shape
     new_universe = np.zeros((rows,cols), int)
     while t0 < t:
-        new_universe = step(universe, new_universe, rule)
+        new_universe = nn_step(universe, new_universe, rule)
         universe = np.zeros((rows,cols), bool)
         for value in num:
             universe = np.logical_or(new_universe == value, universe)
@@ -64,6 +64,18 @@ def evolve(universe, rule, num, t):
             universe = np.logical_or(new_universe == value, universe)
         t0 += 1
     return universe 
+
+def n_evolve(universe, rule, num, t):
+    t0 = 0
+    rows, cols = universe.shape
+    new_universe = np.zeros((rows,cols), int)
+    while t0 < t:
+        new_universe = step(universe, new_universe, rule)
+        universe = np.zeros((rows,cols), bool)
+        for value in num:
+            universe = np.logical_or(new_universe == value, universe)
+        t0 += 1
+    return universe
 
 rules = {
     "Standard" : (np.array([[1,1,1],[1,-9,1],[1,1,1]], int), np.array([3,-6,-7], int)),
